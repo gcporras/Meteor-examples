@@ -8,9 +8,19 @@
 </body>
 
 <template name="color_list">
-  <ul>
-    {{#each colors}}
-    <li style="color: {{name}}"><b>{{name}}</b></li>
-    {{/each}}
-  </ul>
+  {{#if colors}}
+    <ul>
+      {{#each colors}}
+        {{> color_info}}
+      {{/each}}
+    </ul>
+  {{else}}
+    I don't know yet...
+  {{/if}}
+</template>
+
+<template name="color_info">
+    <li style="color: {{name}}">
+      <b>{{name}}</b>
+    </li>
 </template>
