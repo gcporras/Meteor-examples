@@ -24,7 +24,7 @@ if (Meteor.isServer){
         "red", "blue", "green"
       ];
 
-      for (var i =0; i < names.length; names++) {
+      for (var i =0; i < names.length; i++) {
         Colors.insert({name: names[i]});
       }
     }
