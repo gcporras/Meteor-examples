@@ -16,6 +16,13 @@ if (Meteor.isClient) {
     return Session.equals("session_color", this._id) ? "selected" : "";
   };
 
+  Template.color_info.how_many = function () {
+    if (this.likes < 5) return "glyphicon glyphicon-warning-sign";
+    if (this.likes < 15) return "glyphicon glyphicon-upload";
+    if (this.likes < 20) return "glyphicon glyphicon-heart";
+    return "glyphicon glyphicon-star";
+  };
+
   Template.color_info.events = {
     'click': function () {
       Session.set("session_color", this._id);
