@@ -1,1 +1,8 @@
 /* CSS declarations go here */
+.selected {
+  background-color: honeydew;
+  width: 30%;
+  opacity:0.8;
+  filter:alpha(opacity=80);
+  text-transform: uppercase;
+}
