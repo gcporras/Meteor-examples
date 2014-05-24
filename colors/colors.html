@@ -1,26 +1,47 @@
 <head>
-  <title>My favorite colors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My favorite colors example</title>
+  <link rel="stylesheet"
+        href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 
 <body>
-  <h1>My favorite colors are:</h1>
-  {{> color_list}}
+  <div class="container">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h1>My favorite colors are:</h1>
+      </div>
+      {{> color_list}}
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 
 <template name="color_list">
-  {{#if colors}}
-    <ul>
-      {{#each colors}}
-        {{> color_info}}
-      {{/each}}
-    </ul>
-  {{else}}
-    I don't know yet...
-  {{/if}}
+  <div class="panel-body">
+    {{#if colors}}
+      <ul class="list-group">
+        {{#each colors}}
+          {{> color_info}}
+        {{/each}}
+      </ul>
+    {{else}}
+      I don't know yet...
+    {{/if}}
+  </div>
+
+  <div class="panel-footer">
+    <button type="button" class="btn btn-default">
+      Like
+      <span class="glyphicon glyphicon-thumbs-up"></span>
+    </button>
+  </div>
 </template>
 
 <template name="color_info">
-    <li style="color: {{name}}" class="{{color_selected}}">
-      <b>{{name}}</b>
+    <li style="color: {{name}}" class="list-group-item {{color_selected}}">
+        <b>{{name}}</b><span class="badge">+ {{likes}}</span>
     </li>
 </template>

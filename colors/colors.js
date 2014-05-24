@@ -3,7 +3,13 @@ Colors = new Meteor.Collection("colors");
 if (Meteor.isClient) {
 
   Template.color_list.colors = function() {
-    return Colors.find({}, {sort: {name: 1}});
+    return Colors.find({}, {sort: {likes: -1, name: 1}});
+  };
+
+  Template.color_list.events = {
+    'click button': function () {
+      Colors.update(Session.get('session_color'), {$inc: {likes: 1}});
+    }
   };
 
   Template.color_info.color_selected = function () {
@@ -25,7 +31,7 @@ if (Meteor.isServer){
       ];
 
       for (var i =0; i < names.length; i++) {
-        Colors.insert({name: names[i]});
+        Colors.insert({name: names[i], likes: 0});
       }
     }
   });
